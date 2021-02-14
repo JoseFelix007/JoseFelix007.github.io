@@ -1,0 +1,518 @@
+body {
+    background: 
+  radial-gradient(circle closest-side at 60% 43%, #323232 26%, rgba(187,0,51,0) 27%),
+  radial-gradient(circle closest-side at 40% 43%, #323232 26%, rgba(187,0,51,0) 27%),
+  radial-gradient(circle closest-side at 40% 22%, #373737 45%, rgba(221,51,85,0) 46%),
+  radial-gradient(circle closest-side at 60% 22%, #373737 45%, rgba(221,51,85,0) 46%),
+  radial-gradient(circle closest-side at 50% 35%, #373737 30%, rgba(221,51,85,0) 31%),
+  
+  radial-gradient(circle closest-side at 60% 43%, #323232 26%, rgba(187,0,51,0) 27%) 50px 50px,
+  radial-gradient(circle closest-side at 40% 43%, #323232 26%, rgba(187,0,51,0) 27%) 50px 50px,
+  radial-gradient(circle closest-side at 40% 22%, #3c3c3c 45%, rgba(221,51,85,0) 46%) 50px 50px,
+  radial-gradient(circle closest-side at 60% 22%, #3c3c3c 45%, rgba(221,51,85,0) 46%) 50px 50px,
+  radial-gradient(circle closest-side at 50% 35%, #3c3c3c 30%, rgba(221,51,85,0) 31%) 50px 50px;
+    background-color:#323232;
+    background-size:100px 100px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  #music {
+      position: absolute;
+      z-index: 20;
+  }
+
+/* abc */
+  .center-r {
+    position: absolute;
+    margin: auto;
+    bottom:0; right:0; 
+  }
+  .center-l {
+    position: absolute;
+    margin: auto;
+    bottom:0; left:0; 
+  }
+  
+  .frame {
+    width: 350px;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .glow {
+    position: absolute;
+    margin: auto;
+    top: auto; bottom:50px; left:-460px; right:0;
+    width: 10px;
+    height: 10px;
+    transform: translateY(-100%);
+    border-radius: 50%;
+    box-shadow: none;
+    animation: join 2s -1s infinite,
+      halo 2s -1s infinite;
+  }
+  .glow#two {
+    animation: join 2s infinite,
+      halo 2s infinite;
+    
+  }
+  .glow#two2 {
+    animation: join 2s infinite,
+      halo 2s infinite;
+    
+  }
+
+  .half-heart {
+    position: absolute;
+    margin: auto;
+    top: auto; bottom:50px; left:-460px; right:0;
+    width: 60px;
+    height: 60px;
+    background-color: #C72E42;
+    border-radius: 50%;
+    transform: translate(-50%);
+    animation: join 2s -1s infinite;
+  }
+  .half-heart::after {
+    content: "";
+    position: absolute;
+    top: 28px;
+    right: 0px;
+    width:0;
+    height:0;
+    border: 30px solid transparent;
+    border-left: 0; 
+    border-right: 42px solid #C72E42;
+  }
+  
+  .half-heart#two {
+    animation: join 2s infinite;
+  }
+  .half-heart#two2 {
+    animation: join 2s infinite;
+  }
+  
+  .reflection {
+    left: 490px;
+    transform: rotateY(180deg) translate(-50%);
+  }
+  
+  @keyframes join {
+    20% {
+      bottom: 20vh;
+    }
+    40% {
+      bottom: 25vh;
+      left: 0;
+    }
+    100% {
+      bottom: 70vh; 
+      left: 0;
+    }
+  }
+  
+  @keyframes halo {
+    40% {
+      box-shadow: none;
+    }
+    41% {
+      box-shadow: white 0 0 150px 30px;
+    }
+    100% {
+      box-shadow: white 0 0 150px 30px;
+    }
+  }
+  /* abc */
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.row{
+    position: relative;
+    margin: 0px;
+}
+  
+  /*
+  Valentine's Pen
+  ---- */
+  
+  .centered {
+    width: 100%;
+    margin: 10vh auto;
+    text-align: center;
+  }
+  
+  .centered h4 {
+    color: #FFFFFF;
+    font-size: 3em;
+    font-weight: bold;
+  }
+  
+   input[type=checkbox]{
+    display:none;
+   }
+  
+  label {
+    height: 40px;
+    width: auto;
+    padding: 10px 40px;
+    display: inline-block; 
+    cursor: pointer;
+    margin: 0 20px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    transition: all .25s ease-in-out;
+  }
+  
+  label:hover {
+    transform:  scale(1.1,1.1);
+  }
+  
+  .no {
+    background-color: #D8124B;
+  }
+  
+  .yes {
+    background-color: #12D890;
+  }
+  
+  .answer--yes, .answer--no, .animate__animated, .animate__animated__yes {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+  }
+  .animate__animated, .animate__animated__yes {
+    position: absolute;
+    right: 0;
+    z-index: 14;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+  }
+  .animate__animated {
+    height: 10vh;
+    top: 80vh;
+      margin: auto;
+      padding: 10px 10px;
+      text-transform: initial;
+    background-color: #D8124B;
+  }
+  .animate__animated__yes {
+    top: 85vh;
+    height: 5vh;
+    margin: auto;
+    padding: 10px auto;
+    text-transform: initial;
+  background-color: #12D890;
+}
+  
+  .answer--yes {
+    background-image: url('https://media.giphy.com/media/a3IWyhkEC0p32/giphy.gif');
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+  
+  .answer--no {
+    background-image: url('https://media.giphy.com/media/QBEhpJHrv7poQ/giphy.gif');
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+
+  #bigpic {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 400px;
+    z-index: 16;
+    background-size: cover;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+  }
+  #back {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 15;
+    background-color: #0a0a0a;
+    border-style: none;
+    background-size: cover;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+  }
+  
+  input.yes[type=checkbox]:checked ~ .answer--yes {
+    visibility: visible;
+    opacity: 100;
+  }
+  input.no[type=checkbox]:checked ~ .answer--no {
+    visibility: visible;
+    opacity: 100;
+  }
+  input.no[type=checkbox]:checked ~ .animate__animated {
+    visibility: visible;
+    opacity: 100;
+  }
+  input.yes[type=checkbox]:checked ~ .animate__animated__yes {
+    visibility: visible;
+    opacity: 100;
+  }
+
+.div-p, .ul-p, .span-p{
+    display: block; position: absolute;
+    margin: auto; padding: 0;
+    top: 0; bottom: 0; right: 0; left: 0;
+}
+
+.brown { background-color: #452211;}
+.yellow { background-color: #ffd814}
+.yellow-dark { background-color: #e0a100}
+
+.wrapper {
+  height: 300px;
+  width: 300px;
+}
+
+.pikachu{
+  top: 0px; 
+  height: 65%;
+  width: 140px;
+}
+
+.pikachu::before {
+  position: absolute;
+  content: '';
+  background: rgba(0,0,0,0.15);
+  height: 10px;
+  width: 90%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  border-radius: 50%;
+}
+
+.pikachu .head {
+  bottom: auto; 
+  height: 120px;
+  width: 120px;
+  z-index: 3;
+}
+
+.pikachu .head .face{
+  width: 120px;
+  height: 70px;
+  top: auto;
+  border-radius:  40px 40px 30px 30px; 
+  z-index: 2;
+}
+
+.face .eye {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  bottom: auto;
+  top: 28px;
+  -webkit-animation: blink 4s infinite; 
+}
+
+.eye.left {
+  right: auto;
+  left: 32px;
+}
+
+.eye.right {
+  left: auto;
+  right: 32px;
+}
+
+.face .mouth {
+  text-align: center;
+  height: 10px;
+}
+
+.face .cachete {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  bottom: auto;
+  top: 38px;
+  background-color: #e64900;
+  z-index: 9;
+}
+
+.cachete.left {
+  right: auto;
+  left: 10px;
+}
+
+.cachete.right {
+  left: auto;
+  right: 10px;
+}
+
+.pikachu .head .ears{
+  width: 20px;
+  height: 90px;
+  bottom: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ears.left{
+  right: auto; 
+  left: 10px;
+}
+
+.ears.right{
+  left: auto; 
+  right: 10px;
+}
+
+.ears .ears-inside{
+  top: auto; 
+  height: 70px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.ears.right .ears-inside{
+  position: absolute; 
+  left: -50%;
+}
+
+.pikachu .body {
+  bottom: auto;
+  top: 80px;
+  height: 105px;
+  width: 130px;
+  border-radius: 80px 80px 40px 40px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.pikachu .body .paw{
+  bottom: auto; 
+  top: 50px; 
+  height: 15px; 
+  width: 30px; 
+  z-index: 9; 
+  border-bottom: 1px solid #e0a100; 
+  border-top: 1px solid #FFFFFF;
+}
+
+.pikachu .body .paw.left{
+  right: auto;
+  left: 15px;
+  border-radius: 0 50% 50% 0;  
+}
+
+.pikachu .body .paw.right{
+  left: auto;
+  right: 15px;
+  border-radius: 50% 0 0 50%;  
+}
+
+.pikachu .body .heart {
+    width: 40px;
+    height: 40px;
+    bottom: auto;
+    top: 10px; 
+    z-index: 8;
+    animation:beat 0.45s infinite;
+    -webkit-animation:beat 0.45s infinite;
+}
+
+.pikachu .body .heart:before,
+.pikachu .body .heart:after {
+    position: absolute;
+    content: "";
+    left: 20px;
+    top: 30px;
+    width: 50%;
+    height: 100%;
+    background: #e64900;
+    -moz-border-radius: 20px 20px 0 0;
+    border-radius: 10px 10px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+.pikachu .body .heart:after {
+    left: 0px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+.pikachu .leg {
+  z-index: 1; 
+  bottom: auto;
+  top: 172px;
+  height: 20px;
+  width: 30px;
+}
+
+.pikachu .leg.left {
+  right: auto; 
+  left: 20px;
+  border-radius: 80px 10px 80px 10px;
+}
+
+.pikachu .leg.right {
+  left: auto; 
+  right: 20px;
+  border-radius: 10px 80px 10px 80px;
+}
+
+.pikachu .tail {
+  z-index: 1;
+  height: 40px; 
+  width: 50px; 
+  left:auto;
+  bottom: auto; 
+  top: 70px;
+  border-radius: 10% 30%;
+}
+
+@-webkit-keyframes blink/*Safari and Chrome*/ {
+    0 {  height: 14px; top: 28px;}
+    5% {  height: 2px; top: 34px;}
+    10% {  height: 14px; top: 28px;}
+    40% {  height: 14px; top: 28px;}
+    50% {  height: 2px; top: 34px;}
+    55% {  height: 14px; top: 28px;}
+    100% {  height: 14px; top: 28px;}
+  }
