@@ -2,8 +2,8 @@
 import Navbar from "@components/Navbar.astro";
 import "@styles/_globals.scss";
 
-const lang = Astro.currentLocale || "en";
-const logo = "/logo.svg";
+const lang = Astro.currentLocale || "es";
+const logo = "https://josefelix007.github.io/logo.svg";
 ---
 
 <!doctype html>
@@ -61,11 +61,11 @@ const logo = "/logo.svg";
   @use "@styles/variables.scss";
   .main {
     overflow-y: scroll;
-    scroll-snap-type: y proximity;
     padding-top: var(--navbar-height, 60px);
 
     @include variables.media(sm) {
       padding: 0;
+      scroll-snap-type: y proximity;
     }
   }
 </style>

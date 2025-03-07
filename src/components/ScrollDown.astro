@@ -20,7 +20,7 @@ const t = getTranslation(lang);
     const skillsPosition = skillsSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    if (skillsPosition.bottom <= windowHeight) {
+    if (skillsPosition.bottom <= windowHeight + 32) {
       scrollDown.classList.add("show-up");
       scrollButton.setAttribute("href", "#home");
     } else {
@@ -31,6 +31,7 @@ const t = getTranslation(lang);
 
   const main = document.getElementById("main")!;
   main.addEventListener("scroll", checkScrollPosition);
+  main.addEventListener("touchmove", checkScrollPosition);
   checkScrollPosition();
 </script>
 
