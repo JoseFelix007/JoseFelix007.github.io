@@ -1,0 +1,83 @@
+@use 'sass:map';
+
+$text: #070f12;
+$background: #f4fafb;
+$primary: #52a4b7;
+$secondary: #9a9dd5;
+$accent: #7f73c4;
+
+$schemes: (
+ light: (
+   text: #070f12,
+   background: #f4fafb,
+   primary: #52a4b7,
+   secondary: #9a9dd5,
+   accent: #7f73c4,
+ ),
+ dark: (
+   text: #edf5f8,
+   background: #040a0b,
+   primary: #489aad,
+   secondary: #2a2d65,
+   accent: #473b8c,
+ ),
+);
+
+@mixin scheme($scheme) {
+  $map: map.get($schemes, $scheme);
+  @each $key, $value in $map {
+    --color-#{$key}: #{$value};
+  }
+}
+
+// Typography
+
+$text-xs: 0.56rem;
+$text-sm: 0.75rem;
+$text-md: 1rem;
+$text-lg: 1.33rem;
+$text-xl: 1.78rem;
+$text-2xl: 2.37rem;
+$text-3xl: 3.16rem;
+$text-4xl: 4.21rem;
+$text-5xl: 5.61rem;
+
+$texts: (
+  'xs': 0.56rem,
+  'sm': 0.75rem,
+  'md': 1rem,
+  'lg': 1.33rem,
+  'xl': 1.78rem,
+  '2xl': 2.37rem,
+  '3xl': 3.16rem,
+  '4xl': 4.21rem,
+  '5xl': 5.61rem,
+);
+
+@mixin text() {
+  @each $key, $value in $texts {
+    --text-#{$key}: #{$value};
+  }
+}
+
+// Responsive
+
+$breakpoints: (
+  "xs": 375px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+  "xxxl": 1800px,
+);
+
+@mixin media($breakpoint) {
+  @if (map.has-key($breakpoints, $breakpoint)) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "El punto de quiebre #{$breakpoint} no está definido.";
+  }
+}

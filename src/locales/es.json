@@ -1,0 +1,88 @@
+{
+    "me": {
+        "info": {
+            "title": "Desarrollador Full Stack",
+            "description": " con más de 3 años de experiencia, creativo y apasionado por la tecnología. Siempre en busca de nuevos desafíos y oportunidades para aprender y crecer. ✨",
+            "cv": "Descarga mi CV"
+        }
+    },
+    "projects": {
+        "title": "Proyectos",
+        "chess": {
+            "summary": "Un juego de ajedrez interactivo en TypeScript con funcionalidad de arrastrar y soltar, detección de movimientos válidos, jaque y jaque mate.",
+            "description": "ChessMaster TS es una aplicación de ajedrez desarrollada en TypeScript, diseñada para ofrecer una experiencia de juego fluida e intuitiva. Su sistema de arrastrar y soltar permite a los jugadores mover piezas con facilidad, mientras que la lógica de juego garantiza movimientos válidos y la detección precisa de jaque y jaque mate.\nEste proyecto pone en práctica el manejo del DOM, eventos de usuario y estructuras de datos avanzadas, lo que lo convierte en una demostración sólida de habilidades en desarrollo frontend con TypeScript."
+        },
+        "blogs": {
+            "summary": "Plataforma web moderna para la creación y gestión de blogs, construida con Vue 3, TypeScript y Laravel 11.",
+            "description": "BlogSphere es una plataforma de blogging diseñada para proporcionar una experiencia de usuario intuitiva y eficiente. Los usuarios pueden registrarse, escribir publicaciones, guardar borradores y explorar contenido de otros creadores. Con Vue 3 y TypeScript en el frontend, y Laravel 11 con MySQL en el backend, este proyecto combina tecnologías modernas para garantizar rendimiento y escalabilidad.\nSu arquitectura sigue buenas prácticas de desarrollo, asegurando un código limpio y mantenible. BlogSphere representa un paso importante en mi evolución como desarrollador full stack, destacando la integración de frontend y backend en una aplicación real."
+        },
+        "flexphp": {
+            "summary": "Un framework ligero de PHP desarrollado desde cero con fines de aprendizaje y exploración del núcleo de PHP.",
+            "description": "FlexPhp Framework es un proyecto educativo diseñado para comprender en profundidad el funcionamiento interno de los frameworks modernos en PHP. Construido desde cero, implementa conceptos clave como enrutamiento, controladores, modelos, vistas y una arquitectura MVC simplificada. Además, soporta atributos en los controladores, lo que permite una configuración más declarativa y flexible.\nA través de este desarrollo, se exploran buenas prácticas de diseño, seguridad y optimización en PHP, proporcionando una base sólida para la creación de aplicaciones web escalables y mantenibles. FlexPhp es un experimento práctico que refuerza el conocimiento de PHP puro sin depender de frameworks externos."
+        },
+        "vlamp": {
+            "summary": "Un script en Bash para Linux que permite alternar fácilmente entre múltiples versiones de XAMPP.",
+            "description": "VLampp es una herramienta ligera diseñada para desarrolladores que trabajan con múltiples versiones de XAMPP en Linux. Este script facilita la gestión de versiones, permitiendo cambiar entre ellas de manera rápida sin necesidad de reinstalaciones manuales.\nVLampp fue desarrollado con fines de aprendizaje y conveniencia, permitiendo personalizar y optimizar el flujo de trabajo en entornos de desarrollo local."
+        },
+        "lox": {
+            "summary": "Implementación de un intérprete para el lenguaje Lox, basado en el libro Crafting Interpreters de Robert Nystrom.",
+            "description": "Este proyecto es un intérprete para Lox, un lenguaje de scripting sencillo, construido como parte del desafío Build Your Own Interpreter de CodeCrafters. A lo largo del desarrollo, implementé procesos clave como tokenización.\nEste proyecto representa un aprendizaje profundo en la construcción de lenguajes de programación, estructuración de código y principios de diseño de compiladores e intérpretes. Es una demostración sólida de habilidades en estructuras de datos, procesamiento de texto y diseño de software."
+        },
+        "formbuilder": {
+            "summary": "Constructor de formularios interactivo en React con soporte para preguntas de texto y tipo radio mediante arrastrar y soltar.",
+            "description": "Este proyecto es un constructor de formularios en React.js que permite a los usuarios añadir preguntas de texto y de opción múltiple (radio) de manera visual e intuitiva. La interfaz fue diseñada con SCSS para una mejor presentación y experiencia de usuario.\nAunque el proyecto no incluye la funcionalidad para generar formularios completamente funcionales, es una demostración del uso de drag-and-drop, gestión de estado en React y diseño de interfaces dinámicas."
+        },
+        "hakicode": {
+            "summary": "Un tema personalizado para Visual Studio Code, optimizado para PHP y JavaScript, con ajustes de colores y resaltados mejorados.",
+            "description": "Haki Code Theme es un tema visual para Visual Studio Code diseñado para ofrecer una experiencia de codificación más cómoda y eficiente, especialmente en PHP y JavaScript. Ajusta la paleta de colores y los resaltados de sintaxis para mejorar la legibilidad y reducir la fatiga visual en sesiones de trabajo prolongadas.\nEste proyecto refleja mi enfoque en la optimización del entorno de desarrollo y la personalización de herramientas para aumentar la productividad."
+        }
+    },
+    "works": {
+        "title": "Experiencia laboral",
+        "aira": {
+            "date": "Ago 2021 - Dic 2024",
+            "title": "Desarrollador Full Stack",
+            "0": "Desarrollo e implementación de nuevas funcionalidades en sistemas de recursos humanos, utilizando PHP (Laravel) y Javascript (Vue.js).",
+            "1": "Coordinación con el equipo de desarrollo para la asignación de historias de usuario, asegurando la correcta implementación de las funcionalidades.",
+            "2": "Elaboración de documentación técnica para los sistemas desarrollados, facilitando su mantenimiento y evolución."
+        },
+        "phuyu": {
+            "date": "Ene 2021 - Mar 2021",
+            "title": "Desarrollador Full Stack",
+            "0": "Desarrollo e implementación de funcionalidades en sistemas Punto de Venta utilizando CodeIgniter (PHP) y Javascript (jQuery).",
+            "1": "Instalación y configuración de sistemas Punto de Venta en los equipos de los clientes.",
+            "2": "Desarrollo de funcionalidades para la generación de reportes de ventas."
+        },
+        "pucp": {
+            "date": "Oct 2019 - Jul 2020",
+            "title": "Practicante Pre-profesional",
+            "0": "Automatización procesos operativos en la gestión de eventos en la universidad.",
+            "1": "Administración de servidores y otras herramientas informáticas utilizadas en la oficina.",
+            "2": "Actualización de un sistema web para reservas de ambientes para eventos en la universidad."
+        }
+    },
+    "about": {
+        "title": "Sobre mí",
+        "0": "Hola de nuevo! Gracias por ver hasta aquí 🤓. Soy egresado de ingeniería informática formado en Perú 🇵🇪 con una sólida base en programación y amplio dominio de Laravel y Vue.js para crear aplicaciones robustas y eficientes. Además, cuento con conocimientos en React y Java, lo que me permite adaptarme a distintas tecnologías y proyectos 🍀",
+        "1": "Disfruto tanto del frontend como del backend, combinando diseños intuitivos con arquitecturas eficientes. Me enfoco en la calidad del código, la experiencia del usuario y el trabajo en equipo 🤝",
+        "2": "Más allá del mundo del desarrollo, soy un entusiasta de los juegos de mesa de estrategia, ya que desafían mi pensamiento lógico y creatividad. Creo en el equilibrio entre la vida profesional y personal para seguir innovando con energía y motivación 😼"
+    },
+    "education": {
+        "title": "Educación",
+        "date": "Mar 2015 - Dic 2021",
+        "degree": "Ingeniería Informática",
+        "prize": "Beca Excelencia Académica del Pronabec"
+    },
+    "skills": {
+        "title": "Habilidades"
+    },
+    "contact": {
+        "title": "Contacto",
+        "text": "Si estás buscando un profesional proactivo y comprometido, ¡no dudes en ponerte en contacto conmigo!"
+    },
+    "scroll": {
+        "down": "Desliza",
+        "top": "Subir"
+    },
+    "close": "Cerrar"
+}

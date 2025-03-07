@@ -1,0 +1,123 @@
+---
+import Logo from "@components/Logo.astro";
+import ThemeToogle from "@components/ThemeToggle.astro";
+import LangToggle from "./LangToggle.astro";
+import HomeIcon from "@assets/icons/home.svg";
+import ProjectsIcon from "@assets/icons/guide_book.svg";
+import WorksIcon from "@assets/icons/work.svg";
+import AboutIcon from "@assets/icons/info.svg";
+import ContactIcon from "@assets/icons/contact.svg";
+---
+
+<header class="header">
+  <div class="box">
+    <Logo />
+  </div>
+  <nav class="navbar box">
+    <ul>
+      <li><a href="#home"><HomeIcon /></a></li>
+      <li><a href="#projects"><ProjectsIcon /></a></li>
+      <li><a href="#works"><WorksIcon /></a></li>
+      <li><a href="#about"><AboutIcon /></a></li>
+      <li><a href="#skills"><ContactIcon /></a></li>
+    </ul>
+  </nav>
+  <div class="utils">
+    <div class="box">
+      <LangToggle />
+    </div>
+    <div class="box">
+      <ThemeToogle />
+    </div>
+  </div>
+</header>
+
+<style lang="scss">
+  @use "@styles/variables.scss";
+
+  .header {
+    position: fixed;
+    top: 1rem;
+    right: 0;
+    z-index: 2;
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+
+  .navbar {
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // gap: 1rem;
+      list-style: none;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+
+      li {
+        color: var(--color-background);
+        height: 100%;
+        // padding: 0 0.75rem;
+        cursor: pointer;
+
+        a {
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+          padding: 0 0.75rem;
+        }
+
+        &:first-of-type {
+          border-top-left-radius: 999px;
+          border-bottom-left-radius: 999px;
+        }
+        &:last-of-type {
+          border-top-right-radius: 999px;
+          border-bottom-right-radius: 999px;
+        }
+
+        &:hover {
+          background: rgba(from var(--color-background) r g b / 15%);
+        }
+
+        svg {
+          height: 100%;
+          fill: var(--color-background);
+        }
+      }
+    }
+  }
+
+  .box {
+    background: linear-gradient(
+      180deg,
+      var(--color-text) 0%,
+      rgba(from var(--color-text) r g b / 88%) 100%
+    );
+    border: 1px solid rgba(var(--color-text), 0.22);
+    border-radius: 999px;
+
+    box-shadow:
+      0px 0px 0px 0px rgba(from var(--color-text) r g b / 12%),
+      0px 1px 2px 0px rgba(from var(--color-text) r g b / 11%),
+      0px 4px 4px 0px rgba(from var(--color-text) r g b / 10%),
+      0px 10px 6px 0px rgba(from var(--color-text) r g b / 5%),
+      0px 17px 7px 0px rgba(from var(--color-text) r g b / 2%),
+      0px 26px 7px 0px rgba(from var(--color-text) r g b / 1%);
+  }
+
+  .utils {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+
+    @include variables.media(sm) {
+      gap: 0.5rem;
+    }
+  }
+</style>

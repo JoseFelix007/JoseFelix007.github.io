@@ -1,0 +1,287 @@
+---
+import { Image } from "astro:assets";
+import Modal from "./Modal.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  summary: string;
+  description?: string;
+  imageSrc: any;
+  imageAlt: string;
+  langs?: string[];
+  github?: string;
+  live?: string;
+}
+
+const {
+  id,
+  title,
+  summary,
+  description,
+  imageSrc,
+  imageAlt,
+  langs,
+  github,
+  live,
+} = Astro.props;
+---
+
+<div class="project open-modal" data-modal-id={id}>
+  <Image src={imageSrc} alt={imageAlt} width="600" height="600" />
+  <div class="project__tags">
+    {
+      langs?.map((lang) => (
+        <span class={`project__tag ${lang.toLowerCase()}`}>{lang}</span>
+      ))
+    }
+  </div>
+  <h5 class="project__title">{title}</h5>
+  <p class="project__summary">{summary}</p>
+</div>
+
+<Modal id={id}>
+  <div class="project-modal">
+    <div class="project-modal__image">
+      <Image src={imageSrc} alt={imageAlt} width="1000" height="1000" />
+    </div>
+    <div class="project-modal__content">
+      <div class="project__tags__modal">
+        {
+          langs?.map((lang) => (
+            <span class={`project__tag ${lang.toLowerCase()}`}>{lang}</span>
+          ))
+        }
+      </div>
+      <h2 class="project-modal__title">{title}</h2>
+      <pre class="project-modal__description">{description}</pre>
+      {
+        github && (
+          <a href={github} target="_blank">
+            Github
+          </a>
+        )
+      }
+      {
+        live && (
+          <a href={live} target="_blank">
+            En vivo
+          </a>
+        )
+      }
+    </div>
+  </div>
+</Modal>
+
+<style lang="scss">
+  @use "@styles/variables.scss";
+
+  .project {
+    backdrop-filter: blur(4px);
+    border-radius: 8pt;
+    margin-bottom: 1rem;
+
+    transition: box-shadow 0.25s;
+    box-shadow:
+      0px 3px 6px rgba(from var(--color-text) r g b / 2%),
+      0px 2px 7px rgba(from var(--color-text) r g b / 4%),
+      0 0 0 1px rgba(from var(--color-text) r g b / 8%);
+
+    &:hover {
+      box-shadow:
+        0px 3px 6px rgba(from var(--color-text) r g b / 5%),
+        0px 8px 15px rgba(from var(--color-text) r g b / 10%),
+        0 0 0 1px rgba(from var(--color-text) r g b / 15%);
+    }
+
+    width: 100%;
+    padding-bottom: 1rem;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    @include variables.media(sm) {
+      width: 32%;
+    }
+
+    @include variables.media(md) {
+      padding-bottom: 0.1rem;
+      width: 23.5%;
+      aspect-ratio: 1 / 1;
+    }
+
+    img {
+      height: 50%;
+      width: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    &__tags {
+      display: none;
+      padding: 0.5rem 1rem 0.2rem;
+
+      @include variables.media(xl) {
+        display: block;
+      }
+
+      &__modal {
+        padding: 0;
+
+        & .project__tag {
+          margin-right: 0.5rem;
+          font-size: variables.$text-md;
+        }
+      }
+    }
+
+    &__tag {
+      display: inline-block;
+      border-radius: 0.5rem;
+      padding: 0.2rem 0.5rem;
+      margin-right: 0.2rem;
+      margin-bottom: 0.2rem;
+      font-size: variables.$text-sm;
+    }
+
+    &__title {
+      padding: 0 1rem;
+    }
+
+    &__summary {
+      display: none;
+      padding: 0 1rem 0 1rem;
+
+      overflow: hidden;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+
+      @include variables.media(xl) {
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+      }
+
+      @include variables.media(xxl) {
+        -webkit-line-clamp: 2;
+      }
+
+      @include variables.media(xxxl) {
+        -webkit-line-clamp: 5;
+      }
+    }
+  }
+
+  .project-modal {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2%;
+
+    @include variables.media(lg) {
+      flex-direction: row;
+    }
+
+    &__image {
+      max-height: 100px;
+      min-width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+
+      @include variables.media(sm) {
+        max-height: 300px;
+      }
+
+      @include variables.media(lg) {
+        max-height: 600px;
+        min-width: 50%;
+        max-width: 50%;
+      }
+
+      img {
+        width: 100%;
+        object-fit: contain;
+        object-position: 50% 0%;
+
+        @include variables.media(lg) {
+          aspect-ratio: 1 / 1;
+        }
+      }
+    }
+    &__content {
+      flex-grow: 1;
+
+      line-height: 1.5;
+
+      padding: 3rem 0;
+
+      & pre {
+        text-align: justify;
+        white-space: pre-wrap;
+        font-family: inherit;
+      }
+    }
+    &__title {
+      margin-bottom: 1.5rem;
+    }
+    &__description {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .typescript {
+    color: #fefefe;
+    background: #3178c6;
+  }
+
+  .vue {
+    color: #fefefe;
+    background: #33a06f;
+  }
+
+  .react {
+    color: #fefefe;
+    background: #087ea4;
+  }
+
+  .laravel {
+    color: #fefefe;
+    background: #f61500;
+  }
+
+  .nodejs {
+    color: #fefefe;
+    background: #2c682c;
+  }
+
+  .bash {
+    color: #fefefe;
+    background: #3e484a;
+  }
+
+  .go {
+    color: #fefefe;
+    background: #08667e;
+  }
+
+  .php {
+    color: #fefefe;
+    background: #4f5b93;
+  }
+
+  .javascript {
+    color: #fefefe;
+    background: #d6bb38;
+  }
+
+  .css {
+    color: #fefefe;
+    background: #1c76b8;
+  }
+
+  .sass {
+    color: #fefefe;
+    background: #bf4080;
+  }
+</style>

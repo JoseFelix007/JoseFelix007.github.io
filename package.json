@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.2.3"
+    "@astrojs/ts-plugin": "^1.10.4",
+    "astro": "^5.2.3",
+    "sass": "^1.83.4"
   }
 }

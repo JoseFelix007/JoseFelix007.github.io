@@ -1,0 +1,205 @@
+---
+import { Image } from "astro:assets";
+import meImage from "@assets/me.jpeg";
+import EmailIcon from "@assets/icons/email.svg";
+import LinkedinIcon from "@assets/icons/linkedin.svg";
+import GithubIcon from "@assets/icons/github.svg";
+import WhatsappIcon from "@assets/icons/whatsapp.svg";
+
+import { getTranslation } from "../utils/i18n";
+const lang = (Astro.currentLocale as "en" | "es") || "es";
+const t = getTranslation(lang);
+---
+
+<div id="home" class="container page scrollable">
+  <div class="page__info">
+    <div>
+      <h1 class="page__title">José Felix</h1>
+      <p class="page__subtitle">
+        <span class="text__accent">{t.me.info.title}</span>
+        {t.me.info.description}
+      </p>
+    </div>
+    <div class="page__info__buttons">
+      <a
+        class="page__info__buttons__cv"
+        href="/jose-felix-cv.pdf"
+        target="_blank"
+      >
+        {t.me.info.cv}
+      </a>
+      <span class="page__info__buttons__socials">
+        <a
+          class="page__info__buttons__social"
+          href="mailto:jafelixramos@gmail.com"
+          target="_blank"
+        >
+          <EmailIcon />
+        </a>
+        <a
+          class="page__info__buttons__social"
+          href="https://www.linkedin.com/in/j-felix/"
+          target="_blank"
+        >
+          <LinkedinIcon />
+        </a>
+        <a
+          class="page__info__buttons__social"
+          href="https://github.com/JoseFelix007"
+          target="_blank"
+        >
+          <GithubIcon />
+        </a>
+        <a
+          class="page__info__buttons__social"
+          href="https://api.whatsapp.com/send?phone=51990013609&text=%F0%9F%92%BC%20Hola%20Jos%C3%A9%20Felix%2C%0ATe%20escribo%20para%20..."
+          target="_blank"
+        >
+          <WhatsappIcon />
+        </a>
+      </span>
+    </div>
+  </div>
+  <div class="page__image">
+    <Image src={meImage} alt="Imagen de un desarrollador web" width="500" />
+  </div>
+</div>
+
+<style lang="scss">
+  @use "@styles/variables.scss";
+
+  .container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    background: var(--color-background);
+    background-size: 24px 24px;
+    background-image: radial-gradient(
+      circle,
+      rgba(from var(--color-accent) r g b / 25%) 1px,
+      transparent 0
+    );
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include variables.media(md) {
+      flex-direction: row;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      max-width: 90%;
+
+      @include variables.media(sm) {
+        max-width: 90%;
+      }
+
+      @include variables.media(md) {
+        text-align: left;
+        align-items: start;
+        max-width: 40%;
+      }
+
+      &__buttons {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        width: 100%;
+
+        @include variables.media(md) {
+          flex-direction: row;
+        }
+
+        &__cv {
+          text-align: center;
+          display: inline-block;
+          border-radius: 0.5rem;
+          padding: 0.5rem 2rem;
+          text-decoration: none;
+          cursor: pointer;
+          font-size: variables.$text-md;
+
+          color: var(--color-background);
+          background: var(--color-primary);
+
+          &:hover {
+            background: rgba(from var(--color-primary) r g b / 75%);
+          }
+        }
+
+        &__socials {
+          margin-top: 1rem;
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+
+          @include variables.media(md) {
+            margin-top: 0;
+            gap: 1rem;
+          }
+        }
+
+        &__social {
+          text-align: center;
+          display: inline-block;
+          border-radius: 0.5rem;
+          padding: 0.5rem 0.5rem;
+          text-decoration: none;
+          cursor: pointer;
+          font-size: variables.$text-md;
+
+          background: var(--color-text);
+
+          &:hover {
+            background: rgba(from var(--color-text) r g b / 75%);
+          }
+
+          & svg {
+            height: 24px;
+            width: 24px;
+            fill: var(--color-background);
+          }
+        }
+      }
+    }
+
+    &__image {
+      padding: 2rem;
+      max-width: 60%;
+      @include variables.media(md) {
+        max-width: 40%;
+      }
+      img {
+        width: 100%;
+        height: auto;
+
+        clip-path: circle();
+        filter: hue-rotate(27deg);
+      }
+    }
+
+    &__title {
+    }
+    &__subtitle {
+      max-width: 95%;
+      font-size: variables.$text-lg;
+      font-weight: 400;
+    }
+  }
+
+  .text__accent {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+</style>

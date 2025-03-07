@@ -1,0 +1,169 @@
+---
+import chessImage from "@assets/projects/chess.png";
+import blogsImage from "@assets/projects/blogs.png";
+import flexphpImage from "@assets/projects/flexphp.png";
+import hakicodeImage from "@assets/projects/hakicode.png";
+import vlampImage from "@assets/projects/vlamp.png";
+import loxImage from "@assets/projects/lox.png";
+import formbuilderImage from "@assets/projects/formbuilder.png";
+
+import ProjectCard from "./ProjectCard.astro";
+
+import { getTranslation } from "../utils/i18n";
+const lang = (Astro.currentLocale as "en" | "es") || "es";
+const t = getTranslation(lang);
+---
+
+<div id="projects" class="container page scrollable">
+  <h2 class="page__title">{t.projects.title}</h2>
+  <div class="page__projects">
+    <ProjectCard
+      id="chess-modal"
+      title="ChessMaster TS"
+      summary={t.projects.chess.summary}
+      description={t.projects.chess.description}
+      imageSrc={chessImage}
+      imageAlt="Imagen del proyecto de ajedrez"
+      langs={["Typescript", "Nodejs", "Css"]}
+      github="https://github.com/JoseFelix007/chessmaster-ts/"
+    />
+    <ProjectCard
+      id="blogs-modal"
+      title="BlogSphere"
+      summary={t.projects.blogs.summary}
+      description={t.projects.blogs.description}
+      imageSrc={blogsImage}
+      imageAlt="Imagen del proyecto de blogs"
+      langs={["Laravel", "Php", "Vue", "Typescript", "Nodejs", "Sass"]}
+      github="https://github.com/JoseFelix007/blogsphere/"
+    />
+    <ProjectCard
+      id="flexphp-modal"
+      title="FlexPhp Framework"
+      summary={t.projects.flexphp.summary}
+      description={t.projects.flexphp.description}
+      imageSrc={flexphpImage}
+      imageAlt="Imagen del proyecto flexphp"
+      langs={["Php"]}
+      github="https://github.com/JoseFelix007/flex-php/"
+    />
+    <ProjectCard
+      id="vlamp-modal"
+      title="VLampp - Lampp Switcher"
+      summary={t.projects.vlamp.summary}
+      description={t.projects.vlamp.description}
+      imageSrc={vlampImage}
+      imageAlt="Imagen del proyecto vlampp"
+      langs={["Bash"]}
+      github="https://github.com/JoseFelix007/vlampp/"
+    />
+    <ProjectCard
+      id="lox-modal"
+      title="Lox Interpreter"
+      summary={t.projects.lox.summary}
+      description={t.projects.lox.description}
+      imageSrc={loxImage}
+      imageAlt="Imagen del proyecto lox"
+      langs={["Go", "Bash"]}
+      github="https://github.com/JoseFelix007/my-interpreter-lox"
+    />
+    <ProjectCard
+      id="formbuilder-modal"
+      title="Form Builder"
+      summary={t.projects.formbuilder.summary}
+      description={t.projects.formbuilder.description}
+      imageSrc={formbuilderImage}
+      imageAlt="Imagen del proyecto de blogs"
+      langs={["React", "Nodejs", "Javascript", "Sass"]}
+      github="https://github.com/JoseFelix007/my-form-builder"
+    />
+    <ProjectCard
+      id="hakicode-modal"
+      title="Haki Code Theme"
+      summary={t.projects.hakicode.summary}
+      description={t.projects.hakicode.description}
+      imageSrc={hakicodeImage}
+      imageAlt="Imagen del tema hakicode para VS Code"
+      langs={["Nodejs"]}
+      github="https://github.com/JoseFelix007/haki-code-theme"
+    />
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const projectCards = document.querySelectorAll(".open-modal")!;
+    const modalOverlays = document.querySelectorAll(".modal-overlay")!;
+    const closeModalButtons = document.querySelectorAll(".modal-close")!;
+    const scrollIcon = document.getElementById("scroll-down")!;
+
+    projectCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const modalId = (card as HTMLElement).dataset.modalId;
+        const modalOverlay = document.getElementById(`${modalId}-overlay`)!;
+        modalOverlay.style.display = "flex";
+        scrollIcon.style.display = "none";
+      });
+    });
+
+    closeModalButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const modalOverlay = button.closest(".modal-overlay")! as HTMLElement;
+        modalOverlay.style.display = "none";
+        scrollIcon.style.display = "block";
+      });
+    });
+
+    modalOverlays.forEach((overlay) => {
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+          (overlay as HTMLElement).style.display = "none";
+          scrollIcon.style.display = "block";
+        }
+      });
+    });
+  });
+</script>
+
+<style lang="scss">
+  @use "@styles/variables.scss";
+
+  .container {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    z-index: 0;
+    background: var(--color-background);
+    background-size: 8px 8px;
+    background-image: radial-gradient(
+      circle,
+      rgba(from var(--color-accent) r g b / 25%) 1px,
+      transparent 0
+    );
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include variables.media(md) {
+      flex-direction: column;
+    }
+
+    &__title {
+      width: 80%;
+      margin-bottom: 2rem;
+    }
+
+    &__projects {
+      display: flex;
+      gap: 2%;
+      flex-wrap: wrap;
+      align-items: start;
+      width: 80%;
+      height: 80%;
+    }
+  }
+</style>

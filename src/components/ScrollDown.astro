@@ -1,0 +1,142 @@
+---
+import { getTranslation } from "../utils/i18n";
+const lang = (Astro.currentLocale as "en" | "es") || "es";
+const t = getTranslation(lang);
+---
+
+<a href="#" id="scroll-down">
+  <span class="scroll-icon"></span>
+  <span class="scroll-text">{t.scroll.down}</span>
+  <span class="scroll-up-icon"></span>
+  <span class="scroll-up-text">{t.scroll.top}</span>
+</a>
+
+<script>
+  const scrollDown = document.getElementById("scroll-down")!;
+  const skillsSection = document.getElementById("skills")!;
+  const scrollButton = document.getElementById("scroll-down")!;
+
+  function checkScrollPosition() {
+    const skillsPosition = skillsSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (skillsPosition.bottom <= windowHeight) {
+      scrollDown.classList.add("show-up");
+      scrollButton.setAttribute("href", "#home");
+    } else {
+      scrollDown.classList.remove("show-up");
+      scrollButton.removeAttribute("href");
+    }
+  }
+
+  const main = document.getElementById("main")!;
+  main.addEventListener("scroll", checkScrollPosition);
+  checkScrollPosition();
+</script>
+
+<style lang="scss">
+  @use "@styles/variables.scss";
+
+  #scroll-down {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    display: inline-block;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: var(--color-text);
+    width: 4rem;
+    height: 1.5rem;
+    text-align: center;
+
+    & .scroll-up-icon,
+    & .scroll-up-text {
+      display: none;
+    }
+
+    &.show-up {
+      & .scroll-icon,
+      & .scroll-text {
+        display: none;
+      }
+
+      & .scroll-up-icon,
+      & .scroll-up-text {
+        display: block;
+      }
+    }
+
+    & .scroll-icon {
+      position: absolute;
+      bottom: 2rem;
+      right: calc(50% - 1rem);
+      width: 2rem;
+      aspect-ratio: 9/16;
+      border: 0.2rem solid var(--color-text);
+      border-radius: 3rem;
+      box-sizing: border-box;
+      z-index: 1000;
+
+      &::before {
+        position: absolute;
+        top: 0.5rem;
+        left: 50%;
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-left: -0.25rem;
+        background-color: var(--color-text);
+        border-radius: 100%;
+        -webkit-animation: sdb10 2s infinite;
+        animation: sdb10 2s infinite;
+        box-sizing: border-box;
+      }
+    }
+
+    & .scroll-up-icon {
+      position: absolute;
+      bottom: 2rem;
+      right: calc(50% - 0.5rem);
+      width: 1rem;
+      aspect-ratio: 1 / 1;
+      box-sizing: border-box;
+
+      border-left: 4px solid var(--color-text);
+      border-bottom: 4px solid var(--color-text);
+      transform: rotate(135deg);
+    }
+  }
+
+  @-webkit-keyframes sdb10 {
+    0% {
+      -webkit-transform: translate(0, 0);
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      -webkit-transform: translate(0, 20px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes sdb10 {
+    0% {
+      transform: translate(0, 0);
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      transform: translate(0, 20px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

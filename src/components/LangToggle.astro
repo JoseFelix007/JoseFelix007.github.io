@@ -1,0 +1,71 @@
+---
+import TranslateIcon from "@assets/icons/translate.svg";
+---
+
+<button id="lang_switch" class="lang_switch">
+  <TranslateIcon />
+  <TranslateIcon />
+</button>
+
+<script>
+  const langSwitcher = document.getElementById("lang_switch")!;
+
+  function setLang() {
+    const currentLang = document.documentElement.lang || "es";
+    const newLang = currentLang === "es" ? "en" : "es";
+    const hash = window.location.hash;
+    window.location.href = `/${newLang}/${hash}`;
+  }
+
+  langSwitcher.addEventListener("click", setLang);
+</script>
+
+<style lang="scss">
+  @use "@styles/variables.scss";
+
+  .lang_switch {
+    background: none;
+    outline: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    &:hover {
+      background: rgba(from var(--color-background) r g b / 15%);
+    }
+
+    svg {
+      position: absolute;
+      fill: var(--color-background);
+      transition: all 0.5s ease-out;
+
+      &:first-child {
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+      &:last-child {
+        transform: rotate(180deg);
+        opacity: 0;
+      }
+    }
+
+    &.dark svg {
+      translate: 0%;
+      &:first-child {
+        transform: rotate(180deg);
+        opacity: 0;
+      }
+      &:last-child {
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+    }
+  }
+</style>

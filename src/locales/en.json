@@ -1,0 +1,88 @@
+{
+    "me": {
+        "info": {
+            "title": "Full Stack Developer",
+            "description": " with more than 3 years of experience, creative and passionate about technology. Always looking for new challenges and opportunities to learn and grow. ✨",
+            "cv": "Download my CV"
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "chess": {
+            "summary": "An interactive chess game in TypeScript with drag and drop functionality, valid move detection, check and checkmate.",
+            "description": "ChessMaster TS is a chess application developed in TypeScript, designed to offer a fluid and intuitive playing experience. Its drag-and-drop system allows players to move pieces with ease, while the game logic ensures valid moves and accurate check and checkmate detection.\nThis project puts DOM handling, user events, and advanced data structures into practice, making it a solid demonstration of frontend development skills with TypeScript."
+        },
+        "blogs": {
+            "summary": "Modern web platform for blogging and blog management, built with Vue 3, TypeScript and Laravel 11.",
+            "description": "BlogSphere is a blogging platform designed to provide an intuitive and efficient user experience. Users can register, write posts, save drafts, and explore content from other creators. With Vue 3 and TypeScript on the frontend, and Laravel 11 with MySQL on the backend, this project combines modern technologies to ensure performance and scalability.\nIts architecture follows good development practices, ensuring clean and maintainable code. BlogSphere represents an important step in my evolution as a full stack developer, highlighting the integration of frontend and backend in a real application."
+        },
+        "flexphp": {
+            "summary": "A lightweight PHP framework developed from scratch for learning and exploring the PHP core.",
+            "description": "FlexPhp Framework is an educational project designed to provide a deep understanding of the inner workings of modern PHP frameworks. Built from the ground up, it implements key concepts such as routing, controllers, models, views, and a simplified MVC architecture. Additionally, it supports attributes on controllers, allowing for more declarative and flexible configuration.\nThrough this development, good design, security, and optimization practices in PHP are explored, providing a solid foundation for building scalable and maintainable web applications. FlexPhp is a hands-on experiment that reinforces pure PHP knowledge without relying on external frameworks."
+        },
+        "vlamp": {
+            "summary": "A Bash script for Linux that allows you to easily switch between multiple versions of XAMPP.",
+            "description": "VLampp is a lightweight tool designed for developers working with multiple versions of XAMPP on Linux. This script makes version management easy, allowing you to switch between versions quickly without manual reinstallations.\nVLampp was developed for learning and convenience purposes, allowing you to customize and optimize your workflow in local development environments."
+        },
+        "lox": {
+            "summary": "Implementation of an interpreter for the Lox language, based on the book Crafting Interpreters by Robert Nystrom.",
+            "description": "This project is an interpreter for Lox, a simple scripting language, built as part of CodeCrafters' Build Your Own Interpreter challenge. Throughout development, I implemented key processes such as tokenization.\nThis project represents a deep learning in programming language construction, code structuring, and compiler and interpreter design principles. It is a solid demonstration of skills in data structures, text processing, and software design."
+        },
+        "formbuilder": {
+            "summary": "Interactive form builder in React with support for drag and drop text and radio questions.",
+            "description": "This project is a form builder in React.js that allows users to add text and multiple choice (radio) questions in a visual and intuitive way. The interface was designed with SCSS for better presentation and user experience.\nAlthough the project does not include the functionality to generate fully functional forms, it is a demonstration of the use of drag-and-drop, state management in React, and dynamic interface design."
+        },
+        "hakicode": {
+            "summary": "A custom theme for Visual Studio Code, optimized for PHP and JavaScript, with improved color and highlighting settings.",
+            "description": "Haki Code Theme is a visual theme for Visual Studio Code designed to provide a more comfortable and efficient coding experience, especially in PHP and JavaScript. It adjusts the color palette and syntax highlights to improve readability and reduce eye strain during extended work sessions.\nThis project reflects my focus on optimizing the development environment and customizing tools to increase productivity."
+        }
+    },
+    "works": {
+        "title": "Work experience",
+        "aira": {
+            "date": "Aug 2021 - Dec 2024",
+            "title": "Full Stack Developer",
+            "0": "Development and implementation of new functionalities in human resources systems, using PHP (Laravel) and Javascript (Vue.js).",
+            "1": "Coordination with the development team to assign user stories, ensuring the correct implementation of the functionalities.",
+            "2": "Preparation of technical documentation for the developed systems, facilitating their maintenance and evolution."
+        },
+        "phuyu": {
+            "date": "Jan 2021 - Mar 2021",
+            "title": "Full Stack Developer",
+            "0": "Development and implementation of functionalities in Point of Sale systems using CodeIgniter (PHP) and Javascript (jQuery).",
+            "1": "Installation and configuration of Point of Sale systems on clients' computers.",
+            "2": "Development of functionalities for generating sales reports."
+        },
+        "pucp": {
+            "date": "Oct 2019 - Jul 2020",
+            "title": "Pre-professional Intern",
+            "0": "Automation of operational processes in university event management.",
+            "1": "Administration of servers and other computer tools used in the office.",
+            "2": "Updating a web-based system for booking venues for events at the university."
+        }
+    },
+    "about": {
+        "title": "About me",
+        "0": "Hello again! Thanks for reading this far 🤓. I am a graduate of computer engineering trained in Peru 🇵🇪 with a solid foundation in programming and extensive mastery of Laravel and Vue.js to create robust and efficient applications. In addition, I have knowledge in React and Java, which allows me to adapt to different technologies and projects 🍀",
+        "1": "I enjoy both the frontend and the backend, combining intuitive designs with efficient architectures. I focus on code quality, user experience, and teamwork 🤝",
+        "2": "Beyond the world of development, I am an enthusiast of strategy board games, as they challenge my logical thinking and creativity. I believe in the balance between professional and personal life to continue innovating with energy and motivation 😼"
+    },
+    "education": {
+        "title": "Education",
+        "date": "Mar 2015 - Dec 2021",
+        "degree": "Informatic Engineering",
+        "prize": "\"Beca Excelencia Académica\" scholarship from Pronabec - Perú"
+    },
+    "skills": {
+        "title": "Skills"
+    },
+    "contact": {
+        "title": "Contact me",
+        "text": "If you are looking for a proactive and committed professional, do not hesitate to contact me!"
+    },
+    "scroll": {
+        "down": "Scroll",
+        "top": "To top"
+    },
+    "close": "Close"
+}

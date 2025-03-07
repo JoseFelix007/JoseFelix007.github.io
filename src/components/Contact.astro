@@ -1,0 +1,43 @@
+---
+
+---
+
+<div class="container page scrollable">
+  <h2>Acerca de mí</h2>
+  <p>
+    Amplía tu descripción personal, incluyendo más detalles sobre tu
+    experiencia, habilidades y pasiones. Menciona tus áreas de especialización
+    (Laravel, Vue.js, React, Java) y tu enfoque en frontend y backend. Comparte
+    tus valores y principios como desarrollador. Incluye una foto profesional y
+    amigable.
+  </p>
+</div>
+
+<style lang="scss">
+  @use "@styles/variables.scss";
+
+  .container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    background: var(--color-background);
+    background-size: 24px 24px;
+    background-image: radial-gradient(
+      circle,
+      rgba(from var(--color-accent) r g b / 25%) 1px,
+      transparent 0
+    );
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include variables.media(md) {
+      flex-direction: row;
+    }
+  }
+</style>
