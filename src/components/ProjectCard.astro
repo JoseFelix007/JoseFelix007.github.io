@@ -96,6 +96,7 @@ const {
 
     width: 100%;
     padding-bottom: 1rem;
+    aspect-ratio: 1 / 1;
 
     cursor: pointer;
     overflow: hidden;
@@ -107,14 +108,18 @@ const {
     @include variables.media(md) {
       padding-bottom: 0.1rem;
       width: 23.5%;
-      aspect-ratio: 1 / 1;
+      // aspect-ratio: 1 / 1;
     }
 
     img {
-      height: 50%;
+      height: 90%;
       width: 100%;
       object-fit: cover;
       object-position: 50% 50%;
+
+      @include variables.media(md) {
+        height: 50%;
+      }
     }
 
     &__tags {
@@ -146,6 +151,11 @@ const {
 
     &__title {
       padding: 0 1rem;
+      text-align: center;
+
+      @include variables.media(md) {
+        text-align: start;
+      }
     }
 
     &__summary {

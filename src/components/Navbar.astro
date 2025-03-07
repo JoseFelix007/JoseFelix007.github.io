@@ -9,7 +9,7 @@ import AboutIcon from "@assets/icons/info.svg";
 import ContactIcon from "@assets/icons/contact.svg";
 ---
 
-<header class="header">
+<header id="navbar" class="header">
   <div class="box">
     <Logo />
   </div>
@@ -32,20 +32,49 @@ import ContactIcon from "@assets/icons/contact.svg";
   </div>
 </header>
 
+<script>
+  function updateMainPadding() {
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      document.documentElement.style.setProperty(
+        "--navbar-height",
+        `${navbar.offsetHeight}px`
+      );
+    }
+  }
+
+  window.addEventListener("resize", updateMainPadding);
+  window.addEventListener("load", updateMainPadding);
+</script>
+
 <style lang="scss">
   @use "@styles/variables.scss";
 
   .header {
     position: fixed;
-    top: 1rem;
-    right: 0;
     z-index: 2;
-
+    top: 0;
+    right: 0;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 2rem;
+
+    padding: 0.1rem;
+    background: var(--color-text);
+    box-shadow:
+      0px 0px 0px 0px rgba(from var(--color-text) r g b / 12%),
+      0px 1px 2px 0px rgba(from var(--color-text) r g b / 11%),
+      0px 4px 4px 0px rgba(from var(--color-text) r g b / 10%),
+      0px 10px 6px 0px rgba(from var(--color-text) r g b / 5%),
+      0px 17px 7px 0px rgba(from var(--color-text) r g b / 2%),
+      0px 26px 7px 0px rgba(from var(--color-text) r g b / 1%);
+
+    @include variables.media(sm) {
+      padding: 1rem 2rem;
+      background: transparent;
+      box-shadow: none;
+    }
   }
 
   .navbar {
@@ -94,21 +123,28 @@ import ContactIcon from "@assets/icons/contact.svg";
   }
 
   .box {
-    background: linear-gradient(
-      180deg,
-      var(--color-text) 0%,
-      rgba(from var(--color-text) r g b / 88%) 100%
-    );
-    border: 1px solid rgba(var(--color-text), 0.22);
-    border-radius: 999px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 
-    box-shadow:
-      0px 0px 0px 0px rgba(from var(--color-text) r g b / 12%),
-      0px 1px 2px 0px rgba(from var(--color-text) r g b / 11%),
-      0px 4px 4px 0px rgba(from var(--color-text) r g b / 10%),
-      0px 10px 6px 0px rgba(from var(--color-text) r g b / 5%),
-      0px 17px 7px 0px rgba(from var(--color-text) r g b / 2%),
-      0px 26px 7px 0px rgba(from var(--color-text) r g b / 1%);
+    @include variables.media(sm) {
+      background: linear-gradient(
+        180deg,
+        var(--color-text) 0%,
+        rgba(from var(--color-text) r g b / 88%) 100%
+      );
+      border: 1px solid rgba(var(--color-text), 0.22);
+      border-radius: 999px;
+
+      box-shadow:
+        0px 0px 0px 0px rgba(from var(--color-text) r g b / 12%),
+        0px 1px 2px 0px rgba(from var(--color-text) r g b / 11%),
+        0px 4px 4px 0px rgba(from var(--color-text) r g b / 10%),
+        0px 10px 6px 0px rgba(from var(--color-text) r g b / 5%),
+        0px 17px 7px 0px rgba(from var(--color-text) r g b / 2%),
+        0px 26px 7px 0px rgba(from var(--color-text) r g b / 1%);
+    }
   }
 
   .utils {

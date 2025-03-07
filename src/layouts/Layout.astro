@@ -3,6 +3,7 @@ import Navbar from "@components/Navbar.astro";
 import "@styles/_globals.scss";
 
 const lang = Astro.currentLocale || "en";
+const logo = "/logo.svg";
 ---
 
 <!doctype html>
@@ -11,7 +12,36 @@ const lang = Astro.currentLocale || "en";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="title" content="José Felix" />
+    <meta name="description" content="Portafolio de Desarrollador Full Stack" />
+    <meta
+      name="keywords"
+      content="Desarrollador Web, Web Developer, Full Stack, Frontend, Backend"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="José Felix" />
     <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://josefelix007.github.io/" />
+    <meta property="og:title" content="José Felix" />
+    <meta
+      property="og:description"
+      content="Portafolio de Desarrollador Full Stack"
+    />
+    <meta property="og:image" content={logo} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://josefelix007.github.io/" />
+    <meta property="twitter:title" content="José Felix" />
+    <meta
+      property="twitter:description"
+      content="Portafolio de Desarrollador Full Stack"
+    />
+    <meta property="twitter:image" content={logo} />
+
     <title>José Felix</title>
 
     <link
@@ -28,8 +58,14 @@ const lang = Astro.currentLocale || "en";
 </html>
 
 <style lang="scss">
+  @use "@styles/variables.scss";
   .main {
     overflow-y: scroll;
     scroll-snap-type: y proximity;
+    padding-top: var(--navbar-height, 60px);
+
+    @include variables.media(sm) {
+      padding: 0;
+    }
   }
 </style>

@@ -39,8 +39,8 @@ const t = getTranslation(lang);
 
   #scroll-down {
     position: absolute;
-    bottom: 1rem;
-    right: 2rem;
+    bottom: 0.1rem;
+    right: 0.1rem;
     display: inline-block;
     letter-spacing: 0.1em;
     text-decoration: none;
@@ -48,6 +48,15 @@ const t = getTranslation(lang);
     width: 4rem;
     height: 1.5rem;
     text-align: center;
+    font-size: variables.$text-sm;
+
+    @include variables.media(sm) {
+      bottom: 1rem;
+      right: 2rem;
+      width: 4rem;
+      height: 1.5rem;
+      font-size: variables.$text-md;
+    }
 
     & .scroll-up-icon,
     & .scroll-up-text {
@@ -69,41 +78,59 @@ const t = getTranslation(lang);
     & .scroll-icon {
       position: absolute;
       bottom: 2rem;
-      right: calc(50% - 1rem);
-      width: 2rem;
+      right: calc(50% - 0.5rem);
+      width: 1rem;
       aspect-ratio: 9/16;
-      border: 0.2rem solid var(--color-text);
+      border: 0.1rem solid var(--color-text);
       border-radius: 3rem;
       box-sizing: border-box;
       z-index: 1000;
 
+      @include variables.media(sm) {
+        right: calc(50% - 1rem);
+        width: 2rem;
+        border: 0.2rem solid var(--color-text);
+      }
+
       &::before {
         position: absolute;
-        top: 0.5rem;
+        top: 0.1rem;
         left: 50%;
         content: "";
-        width: 0.5rem;
-        height: 0.5rem;
-        margin-left: -0.25rem;
+        width: 0.25rem;
+        height: 0.25rem;
+        margin-left: -0.125rem;
         background-color: var(--color-text);
         border-radius: 100%;
         -webkit-animation: sdb10 2s infinite;
         animation: sdb10 2s infinite;
         box-sizing: border-box;
+
+        @include variables.media(sm) {
+          margin-left: -0.25rem;
+          top: 0.5rem;
+          width: 0.5rem;
+          height: 0.5rem;
+        }
       }
     }
 
     & .scroll-up-icon {
       position: absolute;
       bottom: 2rem;
-      right: calc(50% - 0.5rem);
-      width: 1rem;
+      right: calc(50% - 0.25rem);
+      width: 0.5rem;
       aspect-ratio: 1 / 1;
       box-sizing: border-box;
 
       border-left: 4px solid var(--color-text);
       border-bottom: 4px solid var(--color-text);
       transform: rotate(135deg);
+
+      @include variables.media(sm) {
+        right: calc(50% - 0.5rem);
+        width: 1rem;
+      }
     }
   }
 
