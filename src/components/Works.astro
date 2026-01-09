@@ -1,7 +1,8 @@
 ---
-const langs1 = ["Laravel", "Php", "Vue", "Nodejs", "Javascript", "Sass"];
-const langs2 = ["Php", "JQuery", "Javascript", "Css"];
-const langs3 = ["Php", "JQuery", "Javascript", "Css", "Bash"];
+const langs1 = ["Laravel", "Php", "Vue", "Nodejs", "Javascript", "Sass", "SQL"];
+const langs2 = ["Php", "JQuery", "Javascript", "Css", "SQL"];
+const langs3 = ["Php", "JQuery", "Javascript", "Css", "Bash", "SQL"];
+const langs4 = ["C#", ".NET", "VB6", "Php", "Java", "Azure", "Docker", "SQL"];
 
 import { getTranslation } from "../utils/i18n";
 const lang = (Astro.currentLocale as "en" | "es") || "es";
@@ -11,6 +12,41 @@ const t = getTranslation(lang);
 <div id="works" class="container page scrollable">
   <h2 class="page__title">{t.works.title}</h2>
   <div class="page__works">
+    <!-- NEW EXPERIENCE -->
+    <div class="page__work">
+      <div class="page__work__line">
+        <div class="page__work__icon">
+          <span></span>
+        </div>
+      </div>
+      <div class="page__work__content">
+        <span class="page__work__tags">
+          {
+            langs4?.map((lang) => (
+              <span
+                class={`page__work__tag ${lang.toLowerCase().replace("#", "sharp").replace(".", "dot")}`}
+              >
+                {lang}
+              </span>
+            ))
+          }
+        </span>
+        <span class="page__work__date">{t.works.tech_corp.date}</span>
+        <span class="page__work__title">
+          <span>{t.works.tech_corp.title}</span>
+          <span class="page__work__sep"></span>
+          <span class="page__work__subtitle">Real Systems</span>
+        </span>
+        <ul class="page__work__description">
+          <li>{t.works.tech_corp[0]}</li>
+          <li>{t.works.tech_corp[1]}</li>
+          <li>{t.works.tech_corp[2]}</li>
+          <li>{t.works.tech_corp[3]}</li>
+        </ul>
+      </div>
+    </div>
+    <!-- END NEW EXPERIENCE -->
+
     <div class="page__work">
       <div class="page__work__line">
         <div class="page__work__icon">
@@ -40,68 +76,106 @@ const t = getTranslation(lang);
         </ul>
       </div>
     </div>
-    <div class="page__work">
-      <div class="page__work__line">
-        <div class="page__work__icon">
-          <span></span>
+    <!-- Collapsible Section -->
+    <div id="more-works" class="page__works__hidden">
+      <div class="page__work">
+        <div class="page__work__line">
+          <div class="page__work__icon">
+            <span></span>
+          </div>
+        </div>
+        <div class="page__work__content">
+          <span class="page__work__tags">
+            {
+              langs2?.map((lang) => (
+                <span class={`page__work__tag ${lang.toLowerCase()}`}>
+                  {lang}
+                </span>
+              ))
+            }
+          </span>
+          <span class="page__work__date">{t.works.phuyu.date}</span>
+          <span class="page__work__title">
+            <span>{t.works.phuyu.title}</span>
+            <span class="page__work__sep"></span>
+            <span class="page__work__subtitle">Phuyu Soft</span>
+          </span>
+          <ul class="page__work__description">
+            <li>{t.works.phuyu[0]}</li>
+            <li>{t.works.phuyu[1]}</li>
+            <li>{t.works.phuyu[2]}</li>
+          </ul>
         </div>
       </div>
-      <div class="page__work__content">
-        <span class="page__work__tags">
-          {
-            langs2?.map((lang) => (
-              <span class={`page__work__tag ${lang.toLowerCase()}`}>
-                {lang}
-              </span>
-            ))
-          }
-        </span>
-        <span class="page__work__date">{t.works.phuyu.date}</span>
-        <span class="page__work__title">
-          <span>{t.works.phuyu.title}</span>
-          <span class="page__work__sep"></span>
-          <span class="page__work__subtitle">Phuyu Soft</span>
-        </span>
-        <ul class="page__work__description">
-          <li>{t.works.phuyu[0]}</li>
-          <li>{t.works.phuyu[1]}</li>
-          <li>{t.works.phuyu[2]}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="page__work">
-      <div class="page__work__line">
-        <div class="page__work__icon">
-          <span></span>
+      <div class="page__work">
+        <div class="page__work__line">
+          <div class="page__work__icon">
+            <span></span>
+          </div>
+        </div>
+        <div class="page__work__content">
+          <span class="page__work__tags">
+            {
+              langs3?.map((lang) => (
+                <span class={`page__work__tag ${lang.toLowerCase()}`}>
+                  {lang}
+                </span>
+              ))
+            }
+          </span>
+          <span class="page__work__date">{t.works.pucp.date}</span>
+          <span class="page__work__title">
+            <span>{t.works.pucp.title}</span>
+            <span class="page__work__sep"></span>
+            <span class="page__work__subtitle"
+              >Pontificia Universidad Católica del Perú</span
+            >
+          </span>
+          <ul class="page__work__description">
+            <li>{t.works.pucp[0]}</li>
+            <li>{t.works.pucp[1]}</li>
+            <li>{t.works.pucp[2]}</li>
+          </ul>
         </div>
       </div>
-      <div class="page__work__content">
-        <span class="page__work__tags">
-          {
-            langs3?.map((lang) => (
-              <span class={`page__work__tag ${lang.toLowerCase()}`}>
-                {lang}
-              </span>
-            ))
-          }
-        </span>
-        <span class="page__work__date">{t.works.pucp.date}</span>
-        <span class="page__work__title">
-          <span>{t.works.pucp.title}</span>
-          <span class="page__work__sep"></span>
-          <span class="page__work__subtitle"
-            >Pontificia Universidad Católica del Perú</span
-          >
-        </span>
-        <ul class="page__work__description">
-          <li>{t.works.pucp[0]}</li>
-          <li>{t.works.pucp[1]}</li>
-          <li>{t.works.pucp[2]}</li>
-        </ul>
-      </div>
     </div>
+
+    <button
+      id="toggle-works-btn"
+      class="page__works__toggle"
+      data-more={t.works.view_more}
+      data-less={t.works.view_less}
+    >
+      {t.works.view_more}
+    </button>
   </div>
 </div>
+
+<script>
+  const btn = document.getElementById("toggle-works-btn");
+  const moreWorks = document.getElementById("more-works");
+
+  if (btn && moreWorks) {
+    btn.addEventListener("click", () => {
+      const isHidden =
+        moreWorks.style.maxHeight === "0px" || !moreWorks.style.maxHeight;
+      const textMore = btn.dataset.more || "Ver más";
+      const textLess = btn.dataset.less || "Ver menos";
+
+      if (isHidden) {
+        // Expand
+        moreWorks.style.maxHeight = moreWorks.scrollHeight + "px";
+        moreWorks.style.opacity = "1";
+        btn.textContent = textLess;
+      } else {
+        // Collapse
+        moreWorks.style.maxHeight = "0px";
+        moreWorks.style.opacity = "0";
+        btn.textContent = textMore;
+      }
+    });
+  }
+</script>
 
 <style lang="scss">
   @use "@styles/variables.scss";
@@ -148,6 +222,7 @@ const t = getTranslation(lang);
 
     &__work {
       display: flex;
+      width: 100%;
 
       &__icon {
         width: 2rem;
@@ -188,6 +263,7 @@ const t = getTranslation(lang);
         margin: 0.25rem 1rem 1rem;
         display: flex;
         flex-direction: column;
+        width: 100%;
       }
 
       &__date {
@@ -295,5 +371,78 @@ const t = getTranslation(lang);
   .sass {
     color: #fefefe;
     background: #bf4080;
+  }
+
+  /* New Tags */
+  .csharp {
+    color: #fefefe;
+    background: #9b4f96;
+  }
+  .dotnet {
+    color: #fefefe;
+    background: #512bd4;
+  }
+  .azure {
+    color: #fefefe;
+    background: #007fff;
+  }
+  .docker {
+    color: #fefefe;
+    background: #2496ed;
+  }
+  .sql {
+    color: #000;
+    background: #ccc;
+  }
+  .java {
+    color: #fefefe;
+    background: #ce4e13;
+  }
+  .vb6 {
+    color: #fefefe;
+    background: #3b629b;
+  }
+
+  /* Hover Effect */
+  .page__work__content {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition:
+      background 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .page__work:hover .page__work__content {
+    background: rgba(from var(--color-primary) r g b / 10%);
+    transform: translateX(5px);
+  }
+
+  /* Expand/Collapse Styles */
+  .page__works__hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
+    width: 100%;
+  }
+
+  .page__works__toggle {
+    margin-top: 1rem;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    align-self: center;
+
+    &:hover {
+      background: var(--color-primary);
+      color: var(--color-background);
+    }
   }
 </style>

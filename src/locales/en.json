@@ -1,8 +1,8 @@
 {
     "me": {
         "info": {
-            "title": "Full Stack Developer",
-            "description": " with more than 3 years of experience, creative and passionate about technology. Always looking for new challenges and opportunities to learn and grow. ✨",
+            "title": "Software Engineer | Systems Design, Scalability & Cloud",
+            "description": "Designing scalable systems by transforming complex business rules into maintainable architectures. Experienced in robust backend development, Linux environments, and SaaS solutions.  👨🏽‍💻",
             "cv": "Download my CV"
         }
     },
@@ -39,6 +39,16 @@
     },
     "works": {
         "title": "Work experience",
+        "view_more": "View more experience",
+        "view_less": "View less",
+        "tech_corp": {
+            "date": "May 2025 - Present",
+            "title": "Analyst Programmer (Web & Desktop)",
+            "0": "Development and maintenance of web and desktop applications using .NET Framework (4.7.2), .NET Core 3.1, and .NET 8+.",
+            "1": "Support and evolution of legacy systems developed in PHP (5.6, 7.1) and Java (8, 11), prioritizing stability and operational continuity.",
+            "2": "Participation in billing systems, performing technical analysis, incident correction, and functional improvements.",
+            "3": "Interoperability with legacy VB6 solutions."
+        },
         "aira": {
             "date": "Aug 2021 - Dec 2024",
             "title": "Full Stack Developer",
@@ -63,9 +73,9 @@
     },
     "about": {
         "title": "About me",
-        "0": "Hello again! Thanks for reading this far 🤓. I am a graduate of computer engineering trained in Peru 🇵🇪 with a solid foundation in programming and extensive mastery of Laravel and Vue.js to create robust and efficient applications. In addition, I have knowledge in React and Java, which allows me to adapt to different technologies and projects 🍀",
-        "1": "I enjoy both the frontend and the backend, combining intuitive designs with efficient architectures. I focus on code quality, user experience, and teamwork 🤝",
-        "2": "Beyond the world of development, I am an enthusiast of strategy board games, as they challenge my logical thinking and creativity. I believe in the balance between professional and personal life to continue innovating with energy and motivation 😼"
+        "0": "Thanks for making it this far! 🤓 I am a Computer Science Engineer from Peru 🇵🇪 focused on designing systems that are built to last. My career has centered on mastering ecosystems like Laravel, .NET, and Java, building applications where backend robustness and frontend clarity (Vue/React) converge. 🍀",
+        "1": "Beyond writing code 👨🏽‍💻, I'm passionate about Software Architecture. I am driven by understanding the why behind every technical decision. With a strong focus on Linux and systems, I constantly seek the balance between clean code, solid infrastructure, and intuitive user experience.",
+        "2": "When I'm not in front of a terminal, you'll find me immersed in strategy board games. To me, a game board is like a complex system: it requires logical analysis, foresight, and adaptability, skills I transfer to every project I lead. 😼"
     },
     "education": {
         "title": "Education",

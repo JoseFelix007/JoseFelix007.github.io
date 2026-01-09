@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import meImage from "@assets/me.png";
+import meImage from "@assets/me_real.png";
 import EmailIcon from "@assets/icons/email.svg";
 import LinkedinIcon from "@assets/icons/linkedin.svg";
 import GithubIcon from "@assets/icons/github.svg";
@@ -15,10 +15,27 @@ const t = getTranslation(lang);
   <div class="page__info">
     <div>
       <h1 class="page__title">José Felix</h1>
-      <p class="page__subtitle">
-        <span class="text__accent">{t.me.info.title}</span>
-        {t.me.info.description}
-      </p>
+      <div class="page__subtitle">
+        <div class="page__subtitle__title">
+          <span
+            class="text__accent typed-text"
+            style={{ "--n": t.me.info.title.length }}>{t.me.info.title}</span
+          >
+        </div>
+        <div class="description-wrapper">
+          <!-- Ghost element for layout reservation -->
+          <p class="page__subtitle__description ghost">
+            {t.me.info.description}
+          </p>
+          <!-- Actual typing element -->
+          <p
+            id="typed-desc"
+            class="page__subtitle__description typing-absolute"
+            data-text={t.me.info.description}
+          >
+          </p>
+        </div>
+      </div>
     </div>
     <div class="page__info__buttons">
       <a
@@ -64,6 +81,38 @@ const t = getTranslation(lang);
     <Image src={meImage} alt="Imagen de un desarrollador web" width="500" />
   </div>
 </div>
+
+<script>
+  function typeDescription() {
+    const descElement = document.getElementById("typed-desc");
+    if (!descElement) return;
+
+    const text = descElement.dataset.text || "";
+    descElement.textContent = "";
+
+    // Start after title finishes (approx 2.5s)
+    const startDelay = 900;
+    const typeSpeed = 12;
+
+    setTimeout(() => {
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          descElement!.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, typeSpeed);
+        }
+      }
+      type();
+    }, startDelay);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", typeDescription);
+  } else {
+    typeDescription();
+  }
+</script>
 
 <style lang="scss">
   @use "@styles/variables.scss";
@@ -186,21 +235,149 @@ const t = getTranslation(lang);
         width: 100%;
         height: auto;
 
-        clip-path: circle();
+        /* Contour Style */
+        // mask-image: radial-gradient(
+        //   ellipse 70% 90% at 55% 0%,
+        //   black 55%,
+        //   transparent 100%
+        // );
+        // -webkit-mask-image: radial-gradient(
+        //   ellipse 70% 90% at 55% 0%,
+        //   black 55%,
+        //   transparent 100%
+        // );
+
+        /* Glow/Shadow around the body */
+        filter: drop-shadow(
+          0 0 15px rgba(from var(--color-primary) r g b / 60%)
+        );
       }
     }
 
     &__title {
+      font-weight: 800;
+      background: linear-gradient(
+        to right,
+        var(--color-text) 0%,
+        var(--color-primary) 50%,
+        var(--color-text) 100%
+      );
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-flow 5s linear infinite;
     }
+
     &__subtitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       max-width: 95%;
       font-size: variables.$text-lg;
       font-weight: 400;
+
+      @include variables.media(md) {
+        align-items: start;
+      }
+
+      &__title {
+        display: inline-flex; /* Treats the container as fitting to content */
+        width: fit-content; /* Explicitly fit content */
+        margin-bottom: 0.5rem;
+        margin-inline: auto; /* Center in mobile */
+
+        @include variables.media(md) {
+          margin-inline: 0; /* Left align in desktop */
+        }
+      }
+
+      &__description {
+        display: block; // Keep base style
+      }
     }
+
+    .description-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .ghost {
+      visibility: hidden;
+      user-select: none;
+    }
+
+    .typing-absolute {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin: 0; /* Align perfectly */
+    }
+  }
+
+  /* Buttons Staggered Entrance */
+  .page__info__buttons {
+    opacity: 0;
+    animation: fade-up 0.8s ease-out forwards;
+    animation-delay: 0.75s;
   }
 
   .text__accent {
     color: var(--color-primary);
     font-weight: 700;
+  }
+
+  /* Typing effect styles */
+  .typed-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--color-primary);
+    width: 0;
+    animation:
+      typing 1s steps(var(--n), end) forwards,
+      blink-caret 0.75s step-end infinite;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: var(--color-primary);
+    }
+  }
+
+  @keyframes gradient-flow {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>

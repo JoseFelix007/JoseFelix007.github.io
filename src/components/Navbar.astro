@@ -15,11 +15,11 @@ import ContactIcon from "@assets/icons/contact.svg";
   </div>
   <nav class="navbar box">
     <ul>
-      <li><a href="#home"><HomeIcon /></a></li>
-      <li><a href="#projects"><ProjectsIcon /></a></li>
-      <li><a href="#works"><WorksIcon /></a></li>
-      <li><a href="#about"><AboutIcon /></a></li>
-      <li><a href="#skills"><ContactIcon /></a></li>
+      <li><a href="#home" aria-label="Home"><HomeIcon /></a></li>
+      <li><a href="#projects" aria-label="Projects"><ProjectsIcon /></a></li>
+      <li><a href="#works" aria-label="Works"><WorksIcon /></a></li>
+      <li><a href="#about" aria-label="About"><AboutIcon /></a></li>
+      <li><a href="#skills" aria-label="Skills"><ContactIcon /></a></li>
     </ul>
   </nav>
   <div class="utils">
@@ -38,7 +38,7 @@ import ContactIcon from "@assets/icons/contact.svg";
     if (navbar) {
       document.documentElement.style.setProperty(
         "--navbar-height",
-        `${navbar.offsetHeight}px`
+        `${navbar.offsetHeight}px`,
       );
     }
   }

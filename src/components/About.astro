@@ -33,7 +33,7 @@ const t = getTranslation(lang);
     position: relative;
     z-index: 0;
     background: var(--color-background);
-    background-size: 8px 8px;
+    background-size: 24px 24px;
     background-image: radial-gradient(
       circle,
       rgba(from var(--color-accent) r g b / 25%) 1px,
@@ -94,6 +94,8 @@ const t = getTranslation(lang);
       img {
         width: 100%;
         height: auto;
+        clip-path: circle();
+        animation: levitate 6s ease-in-out infinite;
       }
     }
   }

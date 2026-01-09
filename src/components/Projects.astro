@@ -95,32 +95,78 @@ const t = getTranslation(lang);
     const projectCards = document.querySelectorAll(".open-modal")!;
     const modalOverlays = document.querySelectorAll(".modal-overlay")!;
     const closeModalButtons = document.querySelectorAll(".modal-close")!;
-    const scrollIcon = document.getElementById("scroll-down")!;
+    const scrollIcon = document.getElementById("scroll-down"); // May not exist on all pages
+
+    const openModal = (modalId: string) => {
+      const modalOverlay = document.getElementById(`${modalId}-overlay`);
+      if (!modalOverlay) return;
+
+      // Calculate scrollbar width to prevent layout shift
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+
+      // 1. Unhide
+      modalOverlay.style.display = "flex";
+
+      // 2. Add active class for animation
+      requestAnimationFrame(() => {
+        modalOverlay.classList.add("active");
+      });
+
+      if (scrollIcon) scrollIcon.style.display = "none";
+
+      document.body.style.overflow = "hidden";
+      // Add padding to body to compensate for scrollbar removal
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+    };
+
+    const closeModal = (modalOverlay: HTMLElement) => {
+      // 1. Remove active class to start exit animation
+      modalOverlay.classList.remove("active");
+
+      // 2. Wait for transition to finish before hiding
+      modalOverlay.addEventListener("transitionend", function handler() {
+        modalOverlay.style.display = "none";
+        modalOverlay.removeEventListener("transitionend", handler);
+
+        if (scrollIcon) scrollIcon.style.display = "block";
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = ""; // Restore padding
+      });
+    };
 
     projectCards.forEach((card) => {
       card.addEventListener("click", () => {
         const modalId = (card as HTMLElement).dataset.modalId;
-        const modalOverlay = document.getElementById(`${modalId}-overlay`)!;
-        modalOverlay.style.display = "flex";
-        scrollIcon.style.display = "none";
+        if (modalId) openModal(modalId);
       });
     });
 
     closeModalButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        const modalOverlay = button.closest(".modal-overlay")! as HTMLElement;
-        modalOverlay.style.display = "none";
-        scrollIcon.style.display = "block";
+        const modalOverlay = button.closest(".modal-overlay") as HTMLElement;
+        if (modalOverlay) closeModal(modalOverlay);
       });
     });
 
     modalOverlays.forEach((overlay) => {
       overlay.addEventListener("click", (event) => {
         if (event.target === overlay) {
-          (overlay as HTMLElement).style.display = "none";
-          scrollIcon.style.display = "block";
+          closeModal(overlay as HTMLElement);
         }
       });
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const activeModal = document.querySelector(
+          ".modal-overlay.active",
+        ) as HTMLElement;
+        if (activeModal) closeModal(activeModal);
+      }
     });
   });
 </script>

@@ -1,8 +1,8 @@
 {
     "me": {
         "info": {
-            "title": "Desarrollador Full Stack",
-            "description": " con más de 3 años de experiencia, creativo y apasionado por la tecnología. Siempre en busca de nuevos desafíos y oportunidades para aprender y crecer. ✨",
+            "title": "Software Engineer | Systems Design, Scalability & Cloud",
+            "description": "Diseño sistemas escalables transformando reglas de negocio en arquitecturas mantenibles. Experiencia en backend robusto, entornos Linux y soluciones SaaS. 👨🏽‍💻",
             "cv": "Descarga mi CV"
         }
     },
@@ -39,6 +39,16 @@
     },
     "works": {
         "title": "Experiencia laboral",
+        "view_more": "Ver más experiencias",
+        "view_less": "Ver menos",
+        "tech_corp": {
+            "date": "May 2025 - Presente",
+            "title": "Analista Programador (Web & Desktop)",
+            "0": "Desarrollo y mantenimiento de aplicaciones web y desktop utilizando .NET Framework (4.7.2), .NET Core 3.1 y .NET 8+.",
+            "1": "Soporte y evolución de sistemas legacy desarrollados en PHP (5.6, 7.1) y Java (8, 11), priorizando estabilidad y continuidad operativa.",
+            "2": "Participación en sistemas de facturación, realizando análisis técnico, corrección de incidencias y mejoras funcionales.",
+            "3": "Interoperatividad con soluciones legacy VB6."
+        },
         "aira": {
             "date": "Ago 2021 - Dic 2024",
             "title": "Desarrollador Full Stack",
@@ -63,9 +73,9 @@
     },
     "about": {
         "title": "Sobre mí",
-        "0": "Hola de nuevo! Gracias por ver hasta aquí 🤓. Soy egresado de ingeniería informática formado en Perú 🇵🇪 con una sólida base en programación y amplio dominio de Laravel y Vue.js para crear aplicaciones robustas y eficientes. Además, cuento con conocimientos en React y Java, lo que me permite adaptarme a distintas tecnologías y proyectos 🍀",
-        "1": "Disfruto tanto del frontend como del backend, combinando diseños intuitivos con arquitecturas eficientes. Me enfoco en la calidad del código, la experiencia del usuario y el trabajo en equipo 🤝",
-        "2": "Más allá del mundo del desarrollo, soy un entusiasta de los juegos de mesa de estrategia, ya que desafían mi pensamiento lógico y creatividad. Creo en el equilibrio entre la vida profesional y personal para seguir innovando con energía y motivación 😼"
+        "0": "¡Gracias por llegar hasta aquí! 🤓. Soy egresado de ingeniería informática formado en Perú 🇵🇪 enfocado en el diseño de sistemas que no solo funcionan, sino que perduran. Mi carrera se ha centrado en dominar ecosistemas como Laravel, .NET y Java, construyendo aplicaciones donde la robustez del backend y la claridad del frontend (Vue/React) convergen. 🍀",
+        "1": "Más allá de escribir código 👨🏽‍💻, me apasiona la arquitectura de software. Me motiva entender el porqué detrás de cada decisión técnica. Con un fuerte enfoque en Linux y sistemas, busco constantemente el equilibrio entre código limpio, infraestructura sólida y una experiencia de usuario intuitiva.",
+        "2": "Cuando no estoy frente a una terminal, me encontrarás sumergido en juegos de mesa de estrategia. Para mí, un tablero es como un sistema complejo: requiere análisis lógico, anticipación y adaptabilidad, habilidades que transfiero a cada proyecto que lidero. 😼"
     },
     "education": {
         "title": "Educación",

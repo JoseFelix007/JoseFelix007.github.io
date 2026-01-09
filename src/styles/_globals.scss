@@ -5,11 +5,15 @@
 :root {
   @include variables.scheme(light);
   @include variables.text();
-}.dark {
+}
+
+.dark {
   @include variables.scheme(dark);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -36,34 +40,58 @@ body,
 h1 {
   font-size: variables.$text-4xl;
 }
+
 h2 {
   font-size: variables.$text-3xl;
 }
+
 h3 {
   font-size: variables.$text-2xl;
 }
+
 h4 {
   font-size: variables.$text-xl;
 }
+
 h5 {
   font-size: variables.$text-lg;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
+
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -73,8 +101,10 @@ img, picture, video, canvas, svg {
 }
 
 body {
-  scrollbar-width: thin; /* Para Firefox */
-  scrollbar-color: var(--color-primary) rgba(from var(--color-background) r g b / 95%); /* Color de la barra y del fondo */
+  scrollbar-width: thin;
+  /* Para Firefox */
+  scrollbar-color: var(--color-primary) rgba(from var(--color-background) r g b / 95%);
+  /* Color de la barra y del fondo */
 }
 
 ::-webkit-scrollbar {
@@ -95,4 +125,18 @@ body {
 ::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 6px;
+}
+
+@keyframes levitate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

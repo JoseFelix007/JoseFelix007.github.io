@@ -54,6 +54,20 @@ const logo = "https://josefelix007.github.io/logo.png";
     <main id="main" class="main">
       <slot />
     </main>
+    <script>
+      function updateMainPadding() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          document.documentElement.style.setProperty(
+            "--navbar-height",
+            `${navbar.offsetHeight}px`,
+          );
+        }
+      }
+
+      window.addEventListener("resize", updateMainPadding);
+      window.addEventListener("load", updateMainPadding);
+    </script>
   </body>
 </html>
 
@@ -69,3 +83,4 @@ const logo = "https://josefelix007.github.io/logo.png";
     }
   }
 </style>
+```

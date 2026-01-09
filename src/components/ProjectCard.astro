@@ -38,6 +38,27 @@ const {
   </div>
   <h5 class="project__title">{title}</h5>
   <p class="project__summary">{summary}</p>
+
+  <div class="project__actions" onclick="event.stopPropagation()">
+    {
+      github && (
+        <a href={github} target="_blank" title="Ver Código en GitHub">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+          </svg>
+        </a>
+      )
+    }
+    {
+      live && (
+        <a href={live} target="_blank" title="Ver Demo en Vivo">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+          </svg>
+        </a>
+      )
+    }
+  </div>
 </div>
 
 <Modal id={id}>
@@ -77,108 +98,184 @@ const {
   @use "@styles/variables.scss";
 
   .project {
-    backdrop-filter: blur(4px);
-    border-radius: 8pt;
+    // backdrop-filter: blur(10px); // Removing potential blur source
+    border-radius: 1rem;
     margin-bottom: 1rem;
+    position: relative;
 
-    transition: box-shadow 0.25s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow:
-      0px 3px 6px rgba(from var(--color-text) r g b / 2%),
-      0px 2px 7px rgba(from var(--color-text) r g b / 4%),
-      0 0 0 1px rgba(from var(--color-text) r g b / 8%);
-
-    &:hover {
-      box-shadow:
-        0px 3px 6px rgba(from var(--color-text) r g b / 5%),
-        0px 8px 15px rgba(from var(--color-text) r g b / 10%),
-        0 0 0 1px rgba(from var(--color-text) r g b / 15%);
-    }
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(from var(--color-text) r g b / 5%);
 
     width: 100%;
-    padding-bottom: 1rem;
-    aspect-ratio: 1 / 1;
+    padding-bottom: 0; // Removed padding bottom to allow content to fill
+    height: auto; // Allow height to grow with content
+    min-height: 400px;
 
     cursor: pointer;
     overflow: hidden;
+    // Restore white background (or solid theme background) as requested
+    // Using opacity 1 ensures text is visible against it
+    background: var(--color-background);
+    border: 1px solid rgba(from var(--color-text) r g b / 10%);
+
+    display: flex;
+    flex-direction: column;
 
     @include variables.media(sm) {
-      width: 32%;
+      width: 48%;
     }
 
     @include variables.media(md) {
-      padding-bottom: 0.1rem;
+      width: 32%;
+    }
+
+    @include variables.media(lg) {
       width: 23.5%;
-      // aspect-ratio: 1 / 1;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(from var(--color-primary) r g b / 20%);
+      border-color: rgba(from var(--color-primary) r g b / 30%);
+
+      img {
+        transform: scale(1.08);
+      }
+
+      .project__actions {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
     }
 
     img {
-      height: 90%;
+      height: 200px; // Fixed height for image
       width: 100%;
       object-fit: cover;
-      object-position: 50% 50%;
+      object-position: center;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
       @include variables.media(md) {
-        height: 50%;
+        height: 180px;
+      }
+
+      @include variables.media(lg) {
+        height: 160px;
       }
     }
 
     &__tags {
-      display: none;
-      padding: 0.5rem 1rem 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      padding: 0.75rem 1rem 0;
 
-      @include variables.media(xl) {
-        display: block;
-      }
+      // Hide on small screens if too many, optional
+      max-height: 2.5rem;
+      overflow: hidden;
 
       &__modal {
         padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
 
         & .project__tag {
-          margin-right: 0.5rem;
-          font-size: variables.$text-md;
+          font-size: 0.85rem;
+          padding: 0.25rem 0.75rem;
         }
       }
     }
 
     &__tag {
-      display: inline-block;
-      border-radius: 0.5rem;
-      padding: 0.2rem 0.5rem;
-      margin-right: 0.2rem;
-      margin-bottom: 0.2rem;
-      font-size: variables.$text-sm;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      padding: 0.15rem 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+
+      // Default fallback
+      background: rgba(var(--color-text), 0.05);
+      color: var(--color-text);
+
+      // Specific colors handled by classes below
+      opacity: 0.9;
     }
 
     &__title {
-      padding: 0 1rem;
-      text-align: center;
+      padding: 0.5rem 1rem 0;
+      margin: 0;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-primary);
 
-      @include variables.media(md) {
-        text-align: start;
-      }
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     &__summary {
-      display: none;
-      padding: 0 1rem 0 1rem;
+      padding: 0.25rem 1rem 1.5rem;
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: rgba(from var(--color-text) r g b / 80%);
 
-      overflow: hidden;
-      -webkit-line-clamp: 3;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; // Show more lines to fill space
       -webkit-box-orient: vertical;
+      overflow: hidden;
       text-overflow: ellipsis;
+      flex-grow: 1; // Allow summary to fill remaining space
+    }
 
-      @include variables.media(xl) {
-        display: block;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-      }
+    &__actions {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      z-index: 10;
 
-      @include variables.media(xxl) {
-        -webkit-line-clamp: 2;
-      }
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(var(--color-background), 0.9);
+        backdrop-filter: blur(4px);
+        color: var(--color-text);
+        padding: 0.5rem;
+        border-radius: 50%;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease;
 
-      @include variables.media(xxxl) {
-        -webkit-line-clamp: 5;
+        &:hover {
+          transform: scale(1.1);
+          background: var(--color-primary);
+          color: white; // Assuming primary is dark or distinct
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        svg {
+          width: 18px;
+          height: 18px;
+          fill: currentColor;
+        }
       }
     }
   }
@@ -187,111 +284,136 @@ const {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 2%;
+    gap: 2rem;
+    height: 100%;
 
     @include variables.media(lg) {
       flex-direction: row;
+      gap: 3rem;
     }
 
     &__image {
-      max-height: 100px;
-      min-width: 100%;
-      max-width: 100%;
+      width: 100%;
+      border-radius: 0.5rem;
       overflow: hidden;
-
-      @include variables.media(sm) {
-        max-height: 300px;
-      }
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      display: flex; // Align image properly
 
       @include variables.media(lg) {
-        max-height: 600px;
-        min-width: 50%;
-        max-width: 50%;
+        width: 55%;
+        flex-shrink: 0;
+        height: auto; // Allow growing to container height if possible, or stretch?
+        // To make it occupy full height available, we need to ensure the parent has height.
+        // But in a modal, content determines height usually.
+        // If we want the image to match the content height, we can use flex stretch.
+        align-self: stretch;
       }
 
       img {
         width: 100%;
-        object-fit: contain;
-        object-position: 50% 0%;
-
-        @include variables.media(lg) {
-          aspect-ratio: 1 / 1;
-        }
+        height: 100%; // Fill the container
+        display: block;
+        object-fit: cover; // Cover the area, potentially cropping but filling
       }
     }
+
     &__content {
       flex-grow: 1;
-
-      line-height: 1.5;
-
-      padding: 3rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-bottom: 2rem;
 
       & pre {
         text-align: justify;
         white-space: pre-wrap;
         font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: rgba(from var(--color-text) r g b / 90%);
       }
     }
+
     &__title {
-      margin-bottom: 1.5rem;
+      margin: 0;
+      font-size: 2rem;
+      color: var(--color-primary);
+      font-weight: 800;
     }
+
     &__description {
       margin-bottom: 1.5rem;
     }
+
+    &__links {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.5rem;
+        background: rgba(from var(--color-primary) r g b / 10%);
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s;
+
+        &:hover {
+          background: var(--color-primary);
+          color: var(--color-background);
+        }
+      }
+    }
   }
 
+  // Tag Colors - Using variables for consistent look or hardcoded tailored colors
+  // Making text white for better contrast on colored backgrounds
   .typescript {
-    color: #fefefe;
     background: #3178c6;
+    color: white;
   }
-
   .vue {
-    color: #fefefe;
     background: #33a06f;
+    color: white;
   }
-
   .react {
-    color: #fefefe;
     background: #087ea4;
+    color: white;
   }
-
   .laravel {
-    color: #fefefe;
     background: #f61500;
+    color: white;
   }
-
   .nodejs {
-    color: #fefefe;
     background: #2c682c;
+    color: white;
   }
-
   .bash {
-    color: #fefefe;
     background: #3e484a;
+    color: white;
   }
-
   .go {
-    color: #fefefe;
     background: #08667e;
+    color: white;
   }
-
   .php {
-    color: #fefefe;
     background: #4f5b93;
+    color: white;
   }
-
   .javascript {
-    color: #fefefe;
     background: #d6bb38;
-  }
-
+    color: black;
+  } // Yellow needs black text
   .css {
-    color: #fefefe;
     background: #1c76b8;
+    color: white;
   }
-
   .sass {
-    color: #fefefe;
     background: #bf4080;
+    color: white;
   }
 </style>
